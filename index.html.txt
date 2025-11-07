@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário - Escritório Virtual / Indicador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: grid;
+      gap: 12px;
+    }
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    legend {
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #0070f3;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #0059c1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulário - Escritório Virtual / Indicador</h1>
+  <form>
+    <fieldset>
+      <legend>Dados Gerais</legend>
+      <label>Nome Responsável: <input type="text" name="nome_responsavel" required></label>
+      <label>Cargo: <input type="text" name="cargo"></label>
+      <label>Email: <input type="email" name="email" required></label>
+      <label>Telefone: <input type="tel" name="telefone"></label>
+      <label>Nome Fantasia da empresa: <input type="text" name="nome_fantasia"></label>
+      <label>Razão social: <input type="text" name="razao_social"></label>
+      <label>CNPJ: <input type="text" name="cnpj"></label>
+      <label>Endereço: <input type="text" name="endereco"></label>
+      <label>Cidade: <input type="text" name="cidade"></label>
+      <label>UF: <input type="text" name="uf" maxlength="2"></label>
+      <label>CEP: <input type="text" name="cep"></label>
+      <label>Sócios Principais: <input type="text" name="socios_principais"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Dados da Operação</legend>
+      <label>Valor Tokenizado: <input type="number" name="valor_tokenizado"></label>
+      <label>Tipo de Garantia:
+        <select name="tipo_garantia">
+          <option value="">Selecione...</option>
+          <option>Cotas</option>
+          <option>Imóveis</option>
+          <option>Fiança Bancária</option>
+          <option>Aval</option>
+          <option>Outros</option>
+        </select>
+      </label>
+      <label>Deseja fazer o Valuation?
+        <select name="valuation">
+          <option value="Sim">Sim</option>
+          <option value="Não">Não</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>
