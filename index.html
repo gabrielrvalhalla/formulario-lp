@@ -51,6 +51,7 @@
       width: 100%;
       max-width: 600px;
       transition: background 0.3s ease, color 0.3s ease;
+      position: relative;
     }
 
     h1 {
@@ -70,6 +71,7 @@
     .logo {
       display: block;
       max-width: 120px;
+      height: auto;
       margin: 0 auto 12px auto;
     }
 
@@ -116,125 +118,4 @@
 
     button.submit-btn {
       width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 12px;
-      background: var(--primary);
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-
-    button.submit-btn:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    h2.section-title {
-      font-size: 1.1rem;
-      margin: 16px 0 8px;
-      border-bottom: 1px solid var(--input-border);
-      padding-bottom: 4px;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="page-wrap">
-    <div class="container">
-      <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
-
-      <div class="header">
-        <img src="/valsaventura.jpeg" alt="Valsa Digital" class="logo" />
-        <h1>Formulário de Tokenização</h1>
-        <p class="subtitle">
-          Preencha os dados abaixo para que o time da Valsa Digital possa avaliar sua operação de tokenização com precisão e agilidade.
-        </p>
-      </div>
-
-      <form>
-        <h2 class="section-title">Dados Gerais</h2>
-
-        <label>Nome Responsável:</label>
-        <input type="text" name="responsavel" required>
-
-        <label>Cargo:</label>
-        <input type="text" name="cargo">
-
-        <label>Email:</label>
-        <input type="email" name="email" required>
-
-        <label>Telefone:</label>
-        <input type="tel" name="telefone">
-
-        <label>Nome Fantasia da Empresa:</label>
-        <input type="text" name="nome_fantasia">
-
-        <label>Razão Social:</label>
-        <input type="text" name="razao_social">
-
-        <label>CNPJ:</label>
-        <input type="text" name="cnpj">
-
-        <label>Endereço:</label>
-        <input type="text" name="endereco">
-
-        <label>Cidade:</label>
-        <input type="text" name="cidade">
-
-        <label>UF:</label>
-        <select name="uf">
-          <option value="">Selecione</option>
-          <option>SP</option><option>RJ</option><option>MG</option><option>RS</option><option>PR</option>
-          <option>SC</option><option>BA</option><option>PE</option><option>GO</option><option>DF</option>
-        </select>
-
-        <label>CEP:</label>
-        <input type="text" name="cep">
-
-        <label>Sócios Principais:</label>
-        <textarea name="socios"></textarea>
-
-        <h2 class="section-title">Dados da Operação</h2>
-
-        <label>Valor Tokenizado:</label>
-        <input type="text" name="valor_tokenizado">
-
-        <label>Tipo de Garantia:</label>
-        <select name="garantia">
-          <option value="">Selecione</option>
-          <option>Cotas</option>
-          <option>Imóveis</option>
-          <option>Fiança Bancária</option>
-          <option>Aval</option>
-          <option>Outros</option>
-        </select>
-
-        <label>Deseja fazer o Valuation?</label>
-        <select name="valuation">
-          <option value="">Selecione</option>
-          <option>Sim</option>
-          <option>Não</option>
-        </select>
-
-        <button type="submit" class="submit-btn">Enviar Formulário</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle("dark-mode");
-      const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-      localStorage.setItem("theme", theme);
-    }
-
-    (function() {
-      const saved = localStorage.getItem("theme");
-      if (saved === "dark") document.body.classList.add("dark-mode");
-    })();
-  </script>
-</body>
-</html>
+      padding:
