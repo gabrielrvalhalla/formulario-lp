@@ -1,4 +1,4 @@
-< <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -8,17 +8,6 @@
 
   <style>
     :root {
-      --bg-gradient: radial-gradient(circle at top left, #0f172a, #020817 55%);
-      --primary: #2563eb;
-      --accent: #38bdf8;
-      --text-main: #e5e7eb;
-      --text-soft: #9ca3af;
-      --container-bg: rgba(10, 16, 30, 0.98);
-      --input-bg: rgba(9, 9, 15, 0.92);
-      --input-border: rgba(75, 85, 99, 0.9);
-    }
-
-    body.light-mode {
       --bg-gradient: radial-gradient(circle at top left, #f9fafb, #e2e8f0 60%);
       --primary: #3b82f6;
       --accent: #2563eb;
@@ -27,6 +16,17 @@
       --container-bg: #ffffff;
       --input-bg: #f8fafc;
       --input-border: #cbd5e1;
+    }
+
+    body.dark-mode {
+      --bg-gradient: radial-gradient(circle at top left, #0f172a, #020817 55%);
+      --primary: #2563eb;
+      --accent: #38bdf8;
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --container-bg: rgba(10, 16, 30, 0.98);
+      --input-bg: rgba(9, 9, 15, 0.92);
+      --input-border: rgba(75, 85, 99, 0.9);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,76 +43,57 @@
     }
 
     .container {
-      position: relative;
       background: var(--container-bg);
       border-radius: 22px;
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.34);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.14);
       padding: 32px 26px;
       color: var(--text-main);
       width: 100%;
-      max-width: 520px;
+      max-width: 600px;
       transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .header img {
-      width: 80px;
-      border-radius: 10px;
-      margin-bottom: 8px;
-    }
-
-    .header h1 {
-      font-size: 1.5rem;
+    h1 {
+      font-size: 1.6rem;
       font-weight: 600;
       margin-bottom: 8px;
+      text-align: center;
     }
 
-    .header p {
-      font-size: 0.9rem;
+    p.subtitle {
       color: var(--text-soft);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .logo {
+      display: block;
+      max-width: 120px;
+      margin: 0 auto 12px auto;
     }
 
     label {
-      font-weight: 500;
-      margin-bottom: 4px;
       display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: var(--text-main);
+      font-size: 0.9rem;
     }
 
     input, select, textarea {
-      background: var(--input-bg);
-      border: 1px solid var(--input-border);
-      border-radius: 10px;
-      padding: 10px 12px;
-      color: var(--text-main);
       width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text-main);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
       transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
-    button[type="submit"] {
-      background: var(--primary);
-      color: #fff;
-      font-weight: 500;
-      border: none;
-      border-radius: 12px;
-      padding: 12px 20px;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-
-    button[type="submit"]:hover {
-      background: var(--accent);
-      transform: scale(1.03);
-    }
+    textarea { resize: vertical; min-height: 80px; }
 
     button.theme-toggle {
       position: absolute;
@@ -132,55 +113,127 @@
       background: var(--accent);
       transform: scale(1.05);
     }
+
+    button.submit-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    button.submit-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    h2.section-title {
+      font-size: 1.1rem;
+      margin: 16px 0 8px;
+      border-bottom: 1px solid var(--input-border);
+      padding-bottom: 4px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <button class="theme-toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+  <div class="page-wrap">
+    <div class="container">
+      <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
 
-    <div class="header">
-      <img src="/valsaventura.jpeg" alt="Valsa Digital" class="logo" />
-      <h1>Formulário de Tokenização</h1>
-      <p>Preencha os dados abaixo para que o time da Valsa Digital possa avaliar sua operação de tokenização com precisão e agilidade.</p>
+      <div class="header">
+        <img src="/valsaventura.jpeg" alt="Valsa Digital" class="logo" />
+        <h1>Formulário de Tokenização</h1>
+        <p class="subtitle">
+          Preencha os dados abaixo para que o time da Valsa Digital possa avaliar sua operação de tokenização com precisão e agilidade.
+        </p>
+      </div>
+
+      <form>
+        <h2 class="section-title">Dados Gerais</h2>
+
+        <label>Nome Responsável:</label>
+        <input type="text" name="responsavel" required>
+
+        <label>Cargo:</label>
+        <input type="text" name="cargo">
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Telefone:</label>
+        <input type="tel" name="telefone">
+
+        <label>Nome Fantasia da Empresa:</label>
+        <input type="text" name="nome_fantasia">
+
+        <label>Razão Social:</label>
+        <input type="text" name="razao_social">
+
+        <label>CNPJ:</label>
+        <input type="text" name="cnpj">
+
+        <label>Endereço:</label>
+        <input type="text" name="endereco">
+
+        <label>Cidade:</label>
+        <input type="text" name="cidade">
+
+        <label>UF:</label>
+        <select name="uf">
+          <option value="">Selecione</option>
+          <option>SP</option><option>RJ</option><option>MG</option><option>RS</option><option>PR</option>
+          <option>SC</option><option>BA</option><option>PE</option><option>GO</option><option>DF</option>
+        </select>
+
+        <label>CEP:</label>
+        <input type="text" name="cep">
+
+        <label>Sócios Principais:</label>
+        <textarea name="socios"></textarea>
+
+        <h2 class="section-title">Dados da Operação</h2>
+
+        <label>Valor Tokenizado:</label>
+        <input type="text" name="valor_tokenizado">
+
+        <label>Tipo de Garantia:</label>
+        <select name="garantia">
+          <option value="">Selecione</option>
+          <option>Cotas</option>
+          <option>Imóveis</option>
+          <option>Fiança Bancária</option>
+          <option>Aval</option>
+          <option>Outros</option>
+        </select>
+
+        <label>Deseja fazer o Valuation?</label>
+        <select name="valuation">
+          <option value="">Selecione</option>
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Enviar Formulário</button>
+      </form>
     </div>
-
-    <form action="#" method="POST">
-      <label for="nome">Nome completo</label>
-      <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
-
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
-
-      <label for="telefone">Telefone</label>
-      <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" />
-
-      <label for="imovel">Tipo de ativo</label>
-      <select id="imovel" name="imovel">
-        <option value="">Selecione...</option>
-        <option value="imovel">Imóvel</option>
-        <option value="veiculo">Veículo</option>
-        <option value="empresa">Empresa</option>
-        <option value="outro">Outro</option>
-      </select>
-
-      <label for="descricao">Descrição da operação</label>
-      <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva brevemente a operação..."></textarea>
-
-      <button type="submit">Enviar</button>
-    </form>
   </div>
 
   <script>
     function toggleTheme() {
-      document.body.classList.toggle("light-mode");
-      const theme = document.body.classList.contains("light-mode") ? "light" : "dark";
+      document.body.classList.toggle("dark-mode");
+      const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
       localStorage.setItem("theme", theme);
     }
 
     (function() {
       const saved = localStorage.getItem("theme");
-      if (saved === "light") document.body.classList.add("light-mode");
+      if (saved === "dark") document.body.classList.add("dark-mode");
     })();
   </script>
 </body>
