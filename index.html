@@ -35,7 +35,8 @@
       --transition-fast: 0.18s ease-out;
     }
 
-    body.dark-mode {
+    /* CORREÇÃO: Usando 'html.dark-mode' ao invés de 'body.dark-mode' */
+    html.dark-mode {
       /* Variáveis de Cor (Modo Escuro) */
       --bg-body: radial-gradient(circle at top left, #0f172a, #020817 55%);
       --bg-container: radial-gradient(circle at top, rgba(148, 163, 253, 0.08), transparent),
@@ -61,7 +62,6 @@
       padding: 0;
     }
 
-    /* Script de JS no <head> aplica a classe .dark-mode antes da renderização */
     body {
       min-height: 100vh;
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -80,7 +80,6 @@
       position: relative;
     }
 
-    /* --- NOVO: Botão de Tema --- */
     .theme-toggle {
       position: absolute;
       top: 18px;
@@ -112,20 +111,18 @@
       transition: stroke var(--transition-fast);
     }
 
-    /* Lógica para mostrar/esconder ícones */
     .theme-toggle .icon-moon {
       display: none;
     }
 
-    body.dark-mode .theme-toggle .icon-sun {
+    /* CORREÇÃO: Usando 'html.dark-mode' */
+    html.dark-mode .theme-toggle .icon-sun {
       display: none;
     }
 
-    body.dark-mode .theme-toggle .icon-moon {
+    html.dark-mode .theme-toggle .icon-moon {
       display: block;
     }
-
-    /* --- Fim do Botão de Tema --- */
 
     .blur-orbit {
       position: fixed;
@@ -204,8 +201,8 @@
       filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.6));
     }
 
-    /* Logo fica melhor no modo escuro, então clareamos no modo claro */
-    body:not(.dark-mode) .logo {
+    /* CORREÇÃO: Usando 'html:not(.dark-mode)' */
+    html:not(.dark-mode) .logo {
       filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.2));
     }
 
@@ -244,10 +241,10 @@
       box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
       transform: translateY(-1px);
       border-color: var(--accent);
-      /* background: var(--bg-fieldset-hover); */ /* Você pode definir uma var para hover tbm */
     }
 
-    body.dark-mode fieldset:hover {
+    /* CORREÇÃO: Usando 'html.dark-mode' */
+    html.dark-mode fieldset:hover {
       box-shadow: 0 14px 40px rgba(15, 23, 42, 0.32);
       background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.06), transparent),
         rgba(7, 11, 22, 0.98);
@@ -276,7 +273,6 @@
       justify-content: center;
       font-size: 10px;
       color: #f0f4ff;
-      /* Mudei de '0b1020' para um mais claro */
       box-shadow: 0 4px 10px rgba(37, 99, 235, 0.8);
     }
 
@@ -419,8 +415,10 @@
       animation: fadeIn 0.38s ease-out forwards;
     }
 
-    body:not(.dark-mode) .success {
-      color: #166534; /* Verde mais escuro para modo claro */
+    /* CORREÇÃO: Usando 'html:not(.dark-mode)' */
+    html:not(.dark-mode) .success {
+      color: #166534;
+      /* Verde mais escuro para modo claro */
     }
 
     .success h2 {
@@ -442,7 +440,8 @@
       filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.9));
     }
 
-    body:not(.dark-mode) .success .logo {
+    /* CORREÇÃO: Usando 'html:not(.dark-mode)' */
+    html:not(.dark-mode) .success .logo {
       filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.2));
     }
 
@@ -453,4 +452,268 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform:
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 18px 10px;
+        align-items: flex-start;
+      }
+
+      .theme-toggle {
+        top: 8px;
+        right: 8px;
+      }
+
+      .container {
+        padding: 22px 16px 18px;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .subtitle {
+        font-size: 12px;
+      }
+    }
+  </style>
+
+  <script>
+    // SCRIPT DE TEMA (Executa rápido para evitar 'flash')
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        // CORREÇÃO: Aplicar no 'documentElement' (<html>)
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
+  </script>
+
+</head>
+
+<body>
+  <div class="blur-orbit"></div>
+  <div class="blur-orbit-2"></div>
+
+  <div class="page-wrap">
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+
+
+    <div class="container">
+      <div class="header">
+        <img src="/valsaventura.jpeg" alt="Valsa Digital" class="logo" />
+        <h1>Formulário de Tokenização</h1>
+        <p class="subtitle">
+          Preencha os dados abaixo para que o time da Valsa Digital possa avaliar sua operação de tokenização com
+          precisão e agilidade.
+        </p>
+      </div>
+
+      <form id="cadastroForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdL02xdAB9BpUnzgnwK0S4H3XXqniqlfB7gV3LDhyhXid9c4A/formResponse"
+        method="POST" target="hidden_iframe" onsubmit="handleSubmit()">
+        <fieldset>
+          <legend>
+            <span class="legend-step">1</span>
+            Informações do Cadastro
+          </legend>
+
+          <div class="grid-2">
+            <div class="field">
+              <label>Escritório Virtual / Indicador *</label>
+              <input type="text" name="entry.2129902822" required placeholder="Ex. Escritório ..." />
+            </div>
+
+            <div class="field">
+              <label>Nome do Responsável *</label>
+              <input type="text" name="entry.1683951937" required placeholder="Nome completo do responsável" />
+            </div>
+
+            <div class="field">
+              <label>Cargo</label>
+              <input type="text" name="entry.922562521" placeholder="Ex.: Sócio, Diretor, Gestor" />
+            </div>
+
+            <div class="field">
+              <label>E-mail *</label>
+              <input type="email" name="entry.1876100657" required placeholder="exemplo@empresa.com" />
+            </div>
+
+            <div class="field">
+              <label>Telefone / WhatsApp</label>
+              <input type="tel" name="entry.1516881332" placeholder="(00) 00000-0000" />
+            </div>
+
+            <div class="field">
+              <label>Nome Fantasia da Empresa</label>
+              <input type="text" name="entry.1230809521" />
+            </div>
+
+            <div class="field">
+              <label>Razão Social</label>
+              <input type="text" name="entry.1318614345" />
+            </div>
+
+            <div class="field">
+              <label>CNPJ</label>
+              <input type="text" name="entry.398856673" placeholder="00.000.000/0000-00" />
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-top:14px;">
+            <div class="field">
+              <label>Endereço</label>
+              <input type="text" name="entry.762384716" placeholder="Rua, número, complemento" />
+            </div>
+
+            <div class="field">
+              <label>Cidade</label>
+              <input type="text" name="entry.1135007669" />
+            </div>
+
+            <div class="field">
+              <label>UF</label>
+              <input type="text" maxlength="2" name="entry.2099008045" placeholder="UF" />
+            </div>
+
+            <div class="field">
+              <label>CEP</label>
+              <input type="text" name="entry.959845124" placeholder="00000-000" />
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:14px;">
+            <label>Sócios Principais / Estrutura societária</label>
+            <textarea name="entry.487416617" rows="3"
+              placeholder="Informe principais sócios, participações e informações relevantes."></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            <span class="legend-step">2</span>
+            Dados da Operação
+          </legend>
+
+          <div class="grid-2">
+            <div class="field">
+              <label>Valor pretendido para tokenização (R$)</label>
+              <input type="number" name="entry.2061293897" step="0.01" min="0" placeholder="Ex.: 5000000" />
+              <div class="helper">Valor estimado da operação de tokenização.</div>
+            </div>
+
+            <div class="field">
+              <label>Tipo de Garantia</label>
+              <select name="entry.1197414677">
+                <option value="">Selecione...</option>
+                <option value="Cotas">Cotas</option>
+                <option value="Imóveis">Imóveis</option>
+                <option value="Fiança Bancária">Fiança Bancária</option>
+                <option value="Aval">Aval</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Deseja realizar Valuation com a Valsa Digital?</label>
+              <select name="entry.717419997">
+                <option value="">Selecione...</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+                <option value="Gostaria de entender melhor">Gostaria de entender melhor</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <input type="hidden" name="fvv" value="1" />
+        <input type="hidden" name="pageHistory" value="0" />
+        <input type="hidden" name="fbzx" value="1937544408290386544" />
+
+        <div class="actions">
+          <button type="submit">
+            <span class="pulse-dot"></span>
+            Enviar formulário
+          </button>
+        </div>
+      </form>
+
+      <div id="successMessage" class="success hidden">
+        <h2>Obrigado!</h2>
+        <p>Respostas enviadas com sucesso. Nosso time entrará em contato em breve.</p>
+      </div>
+
+      <iframe name="hidden_iframe" style="display:none;"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // --- NOVO: LÓGICA DO BOTÃO DE TEMA ---
+    const themeToggle = document.getElementById('theme-toggle');
+
+    themeToggle.addEventListener('click', () => {
+      // CORREÇÃO: Aplicar no 'documentElement' (<html>)
+      document.documentElement.classList.toggle('dark-mode');
+
+      // Salva a preferência no localStorage
+      if (document.documentElement.classList.contains('dark-mode')) { // CORREÇÃO
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+
+    // --- SEU SCRIPT ORIGINAL ---
+    const fields = document.querySelectorAll(".field input, .field select, .field textarea");
+    fields.forEach((el) => {
+      el.addEventListener("focus", () => {
+        el.parentElement.classList.add("focused");
+      });
+      el.addEventListener("blur", () => {
+        if (!el.value) el.parentElement.classList.remove("focused");
+      });
+    });
+
+    function handleSubmit() {
+      const form = document.getElementById("cadastroForm");
+      const successMessage = document.getElementById("successMessage");
+
+      form.classList.add("hidden");
+      successMessage.classList.remove("hidden");
+    }
+  </script>
+</body>
+
+</html>
