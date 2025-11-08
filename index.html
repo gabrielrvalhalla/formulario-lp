@@ -45,57 +45,36 @@
     .container {
       background: var(--container-bg);
       border-radius: 22px;
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.14);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.34);
       padding: 32px 26px;
       color: var(--text-main);
       width: 100%;
-      max-width: 600px;
+      max-width: 880px;
       transition: background 0.3s ease, color 0.3s ease;
       position: relative;
     }
 
-    h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      text-align: center;
-    }
+    h1 { font-size: 1.6rem; margin-top: 8px; margin-bottom: 6px; }
+    p.subtitle { color: var(--text-soft); margin-bottom: 24px; }
 
-    p.subtitle {
-      color: var(--text-soft);
+    input, select, textarea {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text-main);
+      font-family: inherit;
       font-size: 0.95rem;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .logo {
-      display: block;
-      max-width: 120px;
-      height: auto;
-      margin: 0 auto 12px auto;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
     label {
-      display: block;
-      margin-bottom: 6px;
       font-weight: 500;
       color: var(--text-main);
       font-size: 0.9rem;
     }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--input-border);
-      background: var(--input-bg);
-      color: var(--text-main);
-      font-size: 0.9rem;
-      margin-bottom: 14px;
-      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    }
-
-    textarea { resize: vertical; min-height: 80px; }
 
     button.theme-toggle {
       position: absolute;
@@ -116,6 +95,103 @@
       transform: scale(1.05);
     }
 
-    button.submit-btn {
-      width: 100%;
-      padding:
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .full { grid-column: span 2; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
+
+    <div class="header" style="text-align:center;">
+      <img src="/valsaventura.jpeg" alt="Valsa Digital" class="logo" style="width:120px;" />
+      <h1>Formulário de Tokenização</h1>
+      <p class="subtitle">
+        Preencha os dados abaixo para que o time da Valsa Digital possa avaliar sua operação de tokenização com
+        precisão e agilidade.
+      </p>
+    </div>
+
+    <form>
+      <h2>1️⃣ Informações do Cadastro</h2>
+      <div class="grid">
+        <div>
+          <label>Escritório Virtual / Indicador *</label>
+          <input type="text" name="escritorio" placeholder="Digite aqui..." required>
+        </div>
+        <div>
+          <label>Nome do Responsável *</label>
+          <input type="text" name="responsavel" placeholder="Nome completo do responsável" required>
+        </div>
+
+        <div>
+          <label>Cargo</label>
+          <input type="text" name="cargo" placeholder="Ex.: Sócio, Diretor, Gestor">
+        </div>
+        <div>
+          <label>E-mail *</label>
+          <input type="email" name="email" placeholder="exemplo@empresa.com" required>
+        </div>
+
+        <div>
+          <label>Telefone / WhatsApp</label>
+          <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+        </div>
+        <div>
+          <label>Nome Fantasia da Empresa</label>
+          <input type="text" name="fantasia" placeholder="">
+        </div>
+
+        <div>
+          <label>Razão Social</label>
+          <input type="text" name="razao" placeholder="">
+        </div>
+        <div>
+          <label>CNPJ</label>
+          <input type="text" name="cnpj" placeholder="00.000.000/0000-00">
+        </div>
+
+        <div class="full">
+          <label>Endereço</label>
+          <input type="text" name="endereco" placeholder="Rua, número, complemento">
+        </div>
+
+        <div>
+          <label>CEP</label>
+          <input type="text" name="cep" placeholder="00000-000">
+        </div>
+        <div>
+          <label>UF</label>
+          <input type="text" name="uf" placeholder="Digite o estado (UF)">
+        </div>
+
+        <div class="full">
+          <label>Sócios Principais / Estrutura Societária</label>
+          <textarea name="socios" rows="4" placeholder="Informe principais sócios, participações e informações relevantes."></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // alternância de tema com persistência local
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+      const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+    }
+
+    // restaura tema salvo
+    (function() {
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark") document.body.classList.add("dark-mode");
+    })();
+  </script>
+</body>
+</html>
