@@ -572,50 +572,50 @@
 
             <div class="field">
               <label>Telefone / WhatsApp</label>
-              <input type="tel" name="entry.1516881332" placeholder="(00) 00000-0000" />
+              <input type="tel" name="entry.1516881332" required placeholder="(00) 00000-0000" />
             </div>
 
             <div class="field">
               <label>Nome Fantasia da Empresa</label>
-              <input type="text" name="entry.1230809521" />
+              <input type="text" required name="entry.1230809521" />
             </div>
 
             <div class="field">
               <label>Razão Social</label>
-              <input type="text" name="entry.1318614345" />
+              <input type="text" required name="entry.1318614345" />
             </div>
 
             <div class="field">
               <label>CNPJ</label>
-              <input type="text" name="entry.398856673" placeholder="00.000.000/0000-00" />
+              <input type="text" required name="entry.398856673" placeholder="00.000.000/0000-00" />
             </div>
           </div>
 
           <div class="grid-3" style="margin-top:14px;">
             <div class="field">
               <label>Endereço</label>
-              <input type="text" name="entry.762384716" placeholder="Rua, número, complemento" />
+              <input type="text" name="entry.762384716" required placeholder="Rua, número, complemento" />
             </div>
 
             <div class="field">
               <label>Cidade</label>
-              <input type="text" name="entry.1135007669" />
+              <input type="text" required name="entry.1135007669" />
             </div>
 
             <div class="field">
               <label>UF</label>
-              <input type="text" maxlength="2" name="entry.2099008045" placeholder="UF" />
+              <input type="text" maxlength="2" name="entry.2099008045" required placeholder="UF" />
             </div>
 
             <div class="field">
               <label>CEP</label>
-              <input type="text" name="entry.959845124" placeholder="00000-000" />
+              <input type="text" name="entry.959845124" required placeholder="00000-000" />
             </div>
           </div>
 
           <div class="field" style="margin-top:14px;">
             <label>Sócios Principais / Estrutura societária</label>
-            <textarea name="entry.487416617" rows="3"
+            <textarea name="entry.487416617" rows="3" required
               placeholder="Informe principais sócios, participações e informações relevantes."></textarea>
           </div>
         </fieldset>
@@ -629,13 +629,13 @@
           <div class="grid-2">
             <div class="field">
               <label>Valor pretendido para tokenização (R$)</label>
-              <input type="number" name="entry.2061293897" step="0.01" min="0" placeholder="Ex.: 5000000" />
+              <input type="number" name="entry.2061293897" step="0.01" min="0" required placeholder="Ex.: 5000000" />
               <div class="helper">Valor estimado da operação de tokenização.</div>
             </div>
 
             <div class="field">
               <label>Tipo de Garantia</label>
-              <select name="entry.1197414677">
+              <select required name="entry.1197414677">
                 <option value="">Selecione...</option>
                 <option value="Cotas">Cotas</option>
                 <option value="Imóveis">Imóveis</option>
@@ -647,7 +647,7 @@
 
             <div class="field">
               <label>Deseja realizar Valuation com a Valsa Digital?</label>
-              <select name="entry.717419997">
+              <select required name="entry.717419997">
                 <option value="">Selecione...</option>
                 <option value="Sim">Sim</option>
                 <option value="Não">Não</option>
